@@ -21,11 +21,11 @@ Fig 1 shows simplified view of a vector processor with one functional unit for a
 DAXPY and SAXPY form the basic vector operations. SAXPY stands for “Single-Precision A·X Plus Y”.  SAXPY is a combination of scalar multiplication and vector addition, and it’s very simple: it takes as input two vectors of 32-bit floats X and Y with N elements each, and a scalar value A. It multiplies each element X[i] by A and adds the result to Y[i]. A simple C implementation looks like this.
 
 
-# void saxpy(int n, float a, float x, float y)
-# {
-#  for (int i = 0; i < n; ++i)
-#      y[i] = a*x[i] + y[i];
-# }
+		void saxpy(int n, float a, float x, float y)
+		{
+			for (int i = 0; i < n; ++i)
+		        y[i] = a*x[i] + y[i];
+		}
 
 DAXPY stands for “Double-Precision A·X Plus Y”, and in DAXPY the elements X and Y are 64bit floats. If we take matrix multiplication, it’s a special case of SAXPY or DAXPY with addition not being part of the operation. 
 
@@ -55,12 +55,13 @@ The RISC-V [3] is an open-source hardware born in 2010 at the University of Cali
 # REFERENCES
 
 [1]	I.Goodfellow, Y. Bengio, and A. Courville, Deep learning. MIT press, 2016
+
 [2]	C. Kozyrakis, et al. Hardware/Compiler Codevelopment for an Embedded Media Processor. In Proceedings of the IEEE, Nov. 2001. 
+
 [3]	Risc-v history. (accessed on august 2020). https://riscv.org/ risc-v-history/. 
+
 [4] Ara: A 1 GHz+ Scalable and Energy-Efficient RISC-V Vector Processor with Multi-Precision Floating Point Support in 22 nm FD-SOI
 
 [5] N. Burgess, J. Milanovic, N. Stephens, K. Monachopoulos and D. Mansell, "Bfloat16 Processing for Neural Networks," 2019 IEEE 26th Symposium on Computer Arithmetic (ARITH), 2019, pp. 88-91, doi: 10.1109/ARITH.2019.00022.
 
 [6] H. H. Saleh and E. E. Swartzlander, "A floating-point fused dot-product unit," 2008 IEEE International Conference on Computer Design, 2008, pp. 427-431, doi: 10.1109/ICCD.2008.4751896.  
-
-
