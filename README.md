@@ -1,1 +1,1 @@
-# VSD
+# TensorCore Accelerator for Machine Learning
