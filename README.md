@@ -62,8 +62,11 @@ The RISC-V [3] is an open-source hardware born in 2010 at the University of Cali
 # REFERENCES
 
 [1]	I.Goodfellow, Y. Bengio, and A. Courville, Deep learning. MIT press, 2016
+
 [2]	C. Kozyrakis, et al. Hardware/Compiler Codevelopment for an Embedded Media Processor. In Proceedings of the IEEE, Nov. 2001. 
+
 [3]	Risc-v history. (accessed on august 2020). https://riscv.org/ risc-v-history/. 
+
 [4] Ara: A 1 GHz+ Scalable and Energy-Efficient RISC-V Vector Processor with Multi-Precision Floating Point Support in 22 nm FD-SOI
 
 [5] N. Burgess, J. Milanovic, N. Stephens, K. Monachopoulos and D. Mansell, "Bfloat16 Processing for Neural Networks," 2019 IEEE 26th Symposium on Computer Arithmetic (ARITH), 2019, pp. 88-91, doi: 10.1109/ARITH.2019.00022.
