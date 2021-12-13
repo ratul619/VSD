@@ -1,18 +1,8 @@
 # TensorCore Accelerator for Machine Learning
 
-TensorCore Accelerator for Machine Learning
-
- 
-Ayan Ray
-Noida, India
-ryan882021@gmail.com
- 
 
 
- 
- 
- 
-Abstract— This project focuses on implementing a Deep Learning hardware accelerator called TensorCore - which is a Vector Processor based on v0.10 of the open source RISCV Vector ISA. It is expected to serve as a proof-point for a Deep Learning research platform to experiment with tensor operators and custom number systems. 
+# Abstract— This project focuses on implementing a Deep Learning hardware accelerator called TensorCore - which is a Vector Processor based on v0.10 of the open source RISCV Vector ISA. It is expected to serve as a proof-point for a Deep Learning research platform to experiment with tensor operators and custom number systems. 
 I.	INTRODUCTION 
 In the general case, an array of numbers arranged on a regular grid with a variable number of axes is known as a tensor. The raising markets of AI-based data analytics and deep learning applications, such as software for self-driving cars, have pushed several companies to develop specialized hardware to boost the performance of large dense matrix (tensor) computation [1] . A vector processor is one whose instructions operate on vectors rather than scalar (single data) values. The basic requirements can be:
 •	Need to load/store vectors:  vector registers (contain vectors)
