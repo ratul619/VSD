@@ -13,7 +13,7 @@ Fig 1 shows simplified view of a vector processor with one functional unit for a
  
 			Fig1. 
 
-II.	VECTOR OPERATION : SAXPY AND DAXPY 
+# II.	VECTOR OPERATION : SAXPY AND DAXPY 
 
 DAXPY and SAXPY form the basic vector operations. SAXPY stands for “Single-Precision A·X Plus Y”.  SAXPY is a combination of scalar multiplication and vector addition, and it’s very simple: it takes as input two vectors of 32-bit floats X and Y with N elements each, and a scalar value A. It multiplies each element X[i] by A and adds the result to Y[i]. A simple C implementation looks like this.
 
@@ -26,7 +26,7 @@ void saxpy(int n, float a, float x, float y)
 
 DAXPY stands for “Double-Precision A·X Plus Y”, and in DAXPY the elements X and Y are 64bit floats. If we take matrix multiplication, it’s a special case of SAXPY or DAXPY with addition not being part of the operation. 
 
-III.	MATMUL OPERATION
+# III.	MATMUL OPERATION
 
 Fig3b shows how the multiplication takes place for a 4x4 matrix. 
 
@@ -36,7 +36,7 @@ Fig3b shows how the multiplication takes place for a 4x4 matrix.
  
 
 Observing if we can process four multiplication and addition in parallel per cycle and pipeline the floating point ALU operations, going row wise or column wise, then we can produce four output matrix elements in parallel, essentially executing four SAXPY or DAXPY with no addition operation. These parallel operations can be managed in the vector lanes described in next section.
-IV.	VECTOR PIPELINES AND LANES
+# IV.	VECTOR PIPELINES AND LANES
 Datapath and register files resources can be organized
 in vector lanes [2]. Fig2 shows Organization of a four-lane
 with each lane storing fourth element of vector register. 
@@ -47,7 +47,7 @@ There are three vector functional units shown, an FP add, an FP multiply, and a 
 
 				Fig2
 ARA [4]   The vector register files is implemented as  VRF structure (eight 64-bit wide 1RW banks) is replicated at each lane. vector register file is composed of a set of singleported (1RW) banks. The width of each bank is constrained to the datapath width of each lane, i.e., 64 bit. 
-V.	VECTOR LANES AND MATMUL OPERATION
+# V.	VECTOR LANES AND MATMUL OPERATION
 
 Considering we have four vector lanes , we can divide the operation of the 4x4 matmul operation as shown graphically in Fig3. Fig3 shows only the VEU (Vector execution unit) and the task of feeding the vector lies on the VLDU ( Vector load store unit) . The interaction and communication is shown in Fig4 . The VEU , consists of floating point multipliers and adders , which can be implemented in through different precisions , single or double , and also other data types such as bfloat16 , f16 (IEEE half precision floating point).  The selection of these standards are critical , as the performance of the VEU will depend on them [5].  A fused dot product approach can also be adopted that performs single-precision floating-point multiplication and addition operations on two pairs of data in a time that is only 150% the time required for a conventional floating-point multiplication [6] . 
 
@@ -56,12 +56,12 @@ Considering we have four vector lanes , we can divide the operation of the 4x4 m
 
  
 				Fig4. 
-VI.	 
+# VI.	 
 
-VII.	RISC-V ISA VECTOR EXTENSION
+# VII.	RISC-V ISA VECTOR EXTENSION
 The RISC-V [3] is an open-source hardware born in 2010 at the University of California, Berkeley as an academic research project. The first proposal of a Vector Extension for RISC-V has seen the light in June 2015 , the latest 1.0 version being in Sept 2021. 
 
-REFERENCES
+# REFERENCES
 
 [1]	I.Goodfellow, Y. Bengio, and A. Courville, Deep learning. MIT press, 2016
 [2]	C. Kozyrakis, et al. Hardware/Compiler Codevelopment for an Embedded Media Processor. In Proceedings of the IEEE, Nov. 2001. 
