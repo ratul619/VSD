@@ -28,12 +28,11 @@ DAXPY stands for “Double-Precision A·X Plus Y”, and in DAXPY the elements X
 
 # III.	MATMUL OPERATION
 
-Fig3b shows how the multiplication takes place for a 4x4 matrix. 
+Fig2a and 2b shows how the multiplication takes place for a 4x4 matrix. 
 
-
+ ![Alt text](figures/Fig2.png?raw=true "Fig2a")
  
-
- 
+ ![Alt text](figures/Fig3.png?raw=true "Fig2b")
 
 Observing if we can process four multiplication and addition in parallel per cycle and pipeline the floating point ALU operations, going row wise or column wise, then we can produce four output matrix elements in parallel, essentially executing four SAXPY or DAXPY with no addition operation. These parallel operations can be managed in the vector lanes described in next section.
 # IV.	VECTOR PIPELINES AND LANES
