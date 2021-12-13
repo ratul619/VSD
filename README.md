@@ -56,9 +56,8 @@ Considering we have four vector lanes , we can divide the operation of the 4x4 m
 
  
 				Fig4. 
-# VI.	 
 
-# VII.	RISC-V ISA VECTOR EXTENSION
+# VI.	RISC-V ISA VECTOR EXTENSION
 The RISC-V [3] is an open-source hardware born in 2010 at the University of California, Berkeley as an academic research project. The first proposal of a Vector Extension for RISC-V has seen the light in June 2015 , the latest 1.0 version being in Sept 2021. 
 
 # REFERENCES
