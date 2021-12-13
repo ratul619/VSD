@@ -10,7 +10,7 @@ In the general case, an array of numbers arranged on a regular grid with a varia
 •	Elements of a vector might be stored apart from each other in memory : vector stride register 
 Fig 1 shows simplified view of a vector processor with one functional unit for arithmetic operations (VFU
 
- 
+ ![Alt text](figures/Fig1.png?raw=true "Fig1")
 			Fig1. 
 
 # II.	VECTOR OPERATION : SAXPY AND DAXPY 
