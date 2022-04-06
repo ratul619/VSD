@@ -1,0 +1,66 @@
+# Design
+set ::env(DESIGN_NAME) "top"
+
+set ::env(VERILOG_FILES) [glob ./designs/vector_processor_v1/src/*.v ./designs/vector_processor_v1/src/*.h   ./designs/vector_processor_v1/src/*.sv]
+
+#set ::env(CLOCK_PERIOD) "4.000"
+set ::env(CLOCK_PORT) "clk"
+set ::env(CELL_PAD) 4
+
+
+set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/src/top.sdc
+
+
+set ::env(EXTRA_LIBS) "./designs/vector_processor_v1/sram_64_128_sky130A_SS_1p8V_25C.lib"
+
+#set ::env(TECH_LEF_OPT) {/home/ratul619/IIT_study_VM/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd.tlef /home/ratul619/IIT_study_VM/OpenLane/pdks/sky130A/libs.ref/sky130_sram_macros/lef/sram_1rw1r_32_256_8_sky130.lef  }
+
+#set ::env(CELLS_LEF_OPT) {/home/ratul619/IIT_study_VM/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef /home/ratul619/IIT_study_VM/OpenLane/pdks/sky130A/libs.ref/sky130_sram_macros/lef/sram_1rw1r_32_256_8_sky130.lef}
+set ::env(EXTRA_LEFS) {./designs/vector_processor_v1/sram_64_128_sky130A.lef}
+
+set ::env(DIE_AREA) {0.0 0.0 6000 4500 }
+
+set ::env(FP_SIZING) "absolute"
+
+set ::env(STA_REPORT_POWER) {1}
+
+set ::env(TAP_DECAP_INSERTION) {1}
+
+set ::env(QUIT_ON_TR_DRC) {0}
+
+#set ::env(ROUTING_OPT_ITERS) {10}
+
+#set ::env(FP_DEF_TEMPLATE)  "./designs/vector_processor_v1/top.def"
+
+
+#set ::env(PL_RANDOM_GLB_PLACEMENT) 1
+
+
+set ::env(FP_SIZING) absolute
+
+
+#set ::env(PL_TARGET_DENSITY) 0.40
+
+# set ::env(FP_PIN_ORDER_CFG) $::env(OPENLANE_ROOT)/designs/counter/pin_order.cfg
+
+#Placement Configuration
+set ::env(MACRO_PLACEMENT_CFG) [glob $::env(DESIGN_DIR)/macro.cfg]
+
+#set ::env(PL_RESIZER_REPAIR_TIE_FANOUT) {0}
+
+
+set ::env(VDD_PIN) {VPWR vdd  }
+set ::env(GND_PIN) {VGND gnd}
+
+#set ::env(FP_PDN_ENABLE_MACROS_GRID) 1
+
+set ::env(BOTTOM_MARGIN_MULT) 20
+set ::env(TOP_MARGIN_MULT) 20
+set ::env(LEFT_MARGIN_MULT) 100
+set ::env(RIGHT_MARGIN_MULT) 100
+
+
+set filename ./designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}

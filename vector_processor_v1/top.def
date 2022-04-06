@@ -1,0 +1,169 @@
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN top ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) (  5000000 5000000 ) ;
+COMPONENTS 15;
+
+ - U_controller.lane\[0\].sram\[0\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 0 0  ) N ; 
+ - U_controller.lane\[0\].sram\[1\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 0 10000  ) N ; 
+ - U_controller.lane\[0\].sram\[2\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 0 20000  ) N ; 
+ - U_controller.lane\[0\].sram\[3\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 0 30000  ) N ; 
+ - U_controller.lane\[1\].sram\[0\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 20000 0  ) N ; 
+ - U_controller.lane\[1\].sram\[1\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 20000 10000  ) N ; 
+ - U_controller.lane\[1\].sram\[2\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 20000 20000  ) N ; 
+ - U_controller.lane\[1\].sram\[3\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 20000 30000  ) N ; 
+ - U_controller.lane\[2\].sram\[0\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 40000 0  ) N ; 
+ - U_controller.lane\[2\].sram\[1\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 40000 10000  ) N ; 
+ - U_controller.lane\[2\].sram\[2\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 40000 20000  ) N ; 
+ - U_controller.lane\[2\].sram\[3\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 40000 30000  ) N ; 
+ - U_controller.lane\[3\].sram\[0\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 60000 0  ) N ; 
+ - U_controller.lane\[3\].sram\[1\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 60000 10000  ) N ; 
+ - U_controller.lane\[3\].sram\[2\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 60000 20000  ) N ; 
+ - U_controller.lane\[3\].sram\[3\].U_sram_64_128_sky130A sram_64_128_sky130A + PLACED ( 60000 30000  ) N ; 
+
+ END COMPONENTS
+PINS 35 ;
+    - clk + NET clk + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 1049950 3815295 ) N ;
+    - rstn + NET rstn + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 3171930 3815295 ) N ;
+    - start + NET start + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 199870 3815295 ) N ;
+    - vector_instruction[0] + NET vector_instruction[0] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 3135140 ) N ;
+    - vector_instruction[10] + NET vector_instruction[10] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 2969070 2000 ) N ;
+    - vector_instruction[11] + NET vector_instruction[11] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 1343340 ) N ;
+    - vector_instruction[12] + NET vector_instruction[12] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 2746890 3815295 ) N ;
+    - vector_instruction[13] + NET vector_instruction[13] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 445740 ) N ;
+    - vector_instruction[14] + NET vector_instruction[14] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 2237540 ) N ;
+    - vector_instruction[15] + NET vector_instruction[15] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 2696540 ) N ;
+    - vector_instruction[16] + NET vector_instruction[16] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 7140 ) N ;
+    - vector_instruction[17] + NET vector_instruction[17] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 3394110 2000 ) N ;
+    - vector_instruction[18] + NET vector_instruction[18] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 894540 ) N ;
+    - vector_instruction[19] + NET vector_instruction[19] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 2247740 ) N ;
+    - vector_instruction[1] + NET vector_instruction[1] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 230 2000 ) N ;
+    - vector_instruction[20] + NET vector_instruction[20] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 2321850 3815295 ) N ;
+    - vector_instruction[21] + NET vector_instruction[21] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 1353540 ) N ;
+    - vector_instruction[22] + NET vector_instruction[22] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 2686340 ) N ;
+    - vector_instruction[23] + NET vector_instruction[23] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 624910 3815295 ) N ;
+    - vector_instruction[24] + NET vector_instruction[24] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 2544030 2000 ) N ;
+    - vector_instruction[25] + NET vector_instruction[25] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 3596970 3815295 ) N ;
+    - vector_instruction[26] + NET vector_instruction[26] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 455940 ) N ;
+    - vector_instruction[27] + NET vector_instruction[27] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 422050 2000 ) N ;
+    - vector_instruction[28] + NET vector_instruction[28] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 847090 2000 ) N ;
+    - vector_instruction[29] + NET vector_instruction[29] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 1272130 2000 ) N ;
+    - vector_instruction[2] + NET vector_instruction[2] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 904740 ) N ;
+    - vector_instruction[30] + NET vector_instruction[30] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 1697170 2000 ) N ;
+    - vector_instruction[31] + NET vector_instruction[31] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 3145340 ) N ;
+    - vector_instruction[3] + NET vector_instruction[3] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 3594140 ) N ;
+    - vector_instruction[4] + NET vector_instruction[4] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 1474990 3815295 ) N ;
+    - vector_instruction[5] + NET vector_instruction[5] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 1900030 3815295 ) N ;
+    - vector_instruction[6] + NET vector_instruction[6] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -2000 ) ( 140 2000 )
+        + PLACED ( 2118990 2000 ) N ;
+    - vector_instruction[7] + NET vector_instruction[7] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 1792140 ) N ;
+    - vector_instruction[8] + NET vector_instruction[8] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 2000 3583940 ) N ;
+    - vector_instruction[9] + NET vector_instruction[9] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -2000 -300 ) ( 2000 300 )
+        + PLACED ( 3804575 1802340 ) N ;
+END PINS
+END DESIGN

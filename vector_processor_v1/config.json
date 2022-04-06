@@ -1,0 +1,10 @@
+{
+	"DESIGN_NAME" : "sram_1rw1r_32_256_8_sky130",
+	"VERILOG_FILES" : "./designs/sram_wrapper/src/counter.v",
+	"CLOCK_PERIOD" : 10.000,
+	"CLOCK_PORT" : "clk",
+	"CLOCK_NET" : "clk",
+	"SYNTH_MAX_FANOUT" : 6,
+	"FP_CORE_UTIL" : 55,
+	"PL_TARGET_DENSITY" : 0.60
+}
