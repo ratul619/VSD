@@ -1,0 +1,421 @@
+always @(posedge clk   or negedge rst  ) begin 
+
+
+	if (!rst) begin 
+
+
+		ENABLE_ARR_OP = 0 ; 
+		is_read_ins= 0 ;
+		is_write_ins = 0 ;
+		is_MAC_ins = 0 ;
+		is_PULSE_T_ins = 0 ;
+		is_PULSE_V_ins = 0 ;
+ 		mac_mux_from_ID = 0 ; 
+		is_IDLE = 0; 
+		is_read_neg_cycle = 0 ; 
+		START_MAC  = 0;
+		PRE <=1; 
+		ENABLE_WL <= 0 ; 
+		ENABLE_SL <= 0 ; 
+		ENABLE_BL <= 0 ; 
+		SEL_MUX_TO_VSA <= '0 ; 
+		SEL_MUX_TO_CSA <= '0 ; 
+		SEL_MUX_TO_ADC <= '0 ; 
+		IN0_BL <= 1 ; 
+		IN1_BL <= 1 ; 
+		IN0_SL <= 1 ; 
+		IN1_SL <= 1 ; 
+
+
+
+
+	end 
+
+	else if (enable_IM && ~halt_IM)  begin 
+			
+case (data_out_instruction_memory[31:28])
+
+		`WRITE_RRAM :	// 
+                begin
+              COL_ADDR_W = data_out_instruction_memory[3:0];
+                ROW_ADDR_W = data_out_instruction_memory[7:4]; 
+		DATA_TO_WRITE =  data_out_instruction_memory[8];
+
+		ENABLE_ARR_OP = 1 ; 
+		is_read_ins= 0 ;
+		is_write_ins = 1 ;
+		is_MAC_ins = 0 ;
+		is_PULSE_T_ins = 0 ;
+		is_PULSE_V_ins = 0 ;
+ 		mac_mux_from_ID = 0 ; 
+		is_IDLE = 0; 
+		is_read_neg_cycle = 0 ; 
+		end
+
+
+		`IDLE_RRAM :	// 
+                begin
+             
+               
+		ENABLE_ARR_OP = 0 ; 
+		is_read_ins= 0 ;
+		is_write_ins = 0;
+		is_MAC_ins = 0 ;
+		is_PULSE_T_ins = 0 ;
+		is_PULSE_V_ins = 0 ;
+ 		mac_mux_from_ID = 0 ; 
+		is_IDLE = 1; 
+		is_read_neg_cycle = 0 ;
+		end
+
+
+
+		`READ_RRAM :	// 
+                begin
+              COL_SELECT_FOR_READ = data_out_instruction_memory[0]; // If 0 , selecting LSB 8bits of column ie column [7:0] and if 1 selecting MSB column ie column [15:8]
+                ROW_ADDR_R = data_out_instruction_memory[5:1];
+		ENABLE_ARR_OP = 1 ; 
+
+		is_read_ins= 1 ;
+		is_write_ins = 0 ;
+		is_MAC_ins = 0 ;
+		is_PULSE_T_ins = 0 ;
+		is_PULSE_V_ins = 0 ;
+ 		mac_mux_from_ID = 0 ; 
+		is_IDLE = 0;
+		is_read_neg_cycle = 0 ; 
+
+
+
+
+                end 
+
+		`MAC_OPERATION :	// 
+                begin
+		
+		
+		
+		
+		
+		COL_SELECT_FOR_MAC_ADC = data_out_instruction_memory[0];
+		num_MAC_OP =    data_out_instruction_memory[8:1];
+		start_IF_Address =   data_out_instruction_memory[16:9];
+		
+		counter_mac = 0 ;
+		ENABLE_ARR_OP = 1 ; 
+
+		is_read_ins= 0 ;
+		is_write_ins = 0 ;
+		is_MAC_ins = 1 ;
+		is_PULSE_T_ins = 0 ;
+		is_PULSE_V_ins = 0 ;
+		halt_IM =  1;
+		is_read_neg_cycle = 0 ;
+ 		mac_mux_from_ID = 1 ; 
+		
+
+		START_MAC  = 1;
+		PRE <=1; 
+	
+                end 
+
+		`CONF_T_PULSE_RRAM :	// 
+                begin
+		
+
+		T_PULSE_OP_TYPE =     data_out_instruction_memory[9:8]; 
+		T_PULSE_MULTIPLIER =  data_out_instruction_memory[7:0] ; 
+		ENABLE_ARR_OP = 1 ; 
+
+
+		is_read_ins= 0 ;
+		is_write_ins = 0 ;
+		is_MAC_ins = 0 ;
+		is_PULSE_T_ins = 1 ;
+		is_PULSE_V_ins = 0 ;
+		is_read_neg_cycle = 0 ;
+
+
+                end 
+
+		`CONF_V_PULSE_RRAM :	// 
+                begin
+		
+
+		V_PULSE_OP_TYPE =  	data_out_instruction_memory[3:2]; 
+		V_PULSE_MUX_SEL = 	data_out_instruction_memory[1:0] ; 
+		ENABLE_ARR_OP = 1 ; 
+		
+
+		is_read_ins= 0 ;
+		is_write_ins = 0 ;
+		is_MAC_ins = 0 ;
+		is_PULSE_T_ins = 0 ;
+		is_PULSE_V_ins = 1 ;
+		is_read_neg_cycle = 0 ;
+
+
+                end 
+
+
+
+endcase
+
+
+
+
+	end
+
+///second always 
+
+
+	if  (is_IDLE) begin 
+
+
+				
+				ENABLE_WL <= 0 ; 
+				ENABLE_SL <= 0 ; 
+				ENABLE_BL <= 0 ; 
+				SEL_MUX_TO_VSA <= '0 ; 
+				SEL_MUX_TO_CSA <= '0 ; 
+				SEL_MUX_TO_ADC <= '0 ; 
+				IN0_BL <= 'hz ; 
+				IN1_BL <= 'hz ; 
+				IN0_WL_from_ID <= 'hz ; 
+				IN1_WL_from_ID <= 'hz ; 
+				IN0_SL <= 'hz ; 
+				IN1_SL <= 'hz ; 
+
+
+
+
+end 	else if (is_write_ins  ) begin  
+
+// All Enables are ON in write 
+
+				ENABLE_WL <= 1 ; 
+				ENABLE_SL <= 1 ; 
+				ENABLE_BL <= 1 ; 
+
+// All SEL passgates are OFF
+				SEL_MUX_TO_VSA <= '0 ; 
+				SEL_MUX_TO_CSA <= '0 ; 
+				SEL_MUX_TO_ADC <= '0 ; 
+
+
+
+
+//SET : DATA_TO_WRITE = 1
+	if (DATA_TO_WRITE ==1)   begin 
+
+				for ( i = 0 ;  i < ARRAY_SIZE ; i = i +1 ) begin
+				if (i  == COL_ADDR_W) begin 
+				IN0_BL[i] <=  0  ; 
+				IN1_BL[i] <=  0  ; // AYAN : 00 is SET voltage  
+				IN0_SL[i] <=  1  ; // AYAN : 11 pattern for ground : SL is ground in SET
+				IN1_SL[i] <=  1  ; 
+				end else begin  
+				IN0_BL[i] <=  1  ; 
+				IN1_BL[i] <=  1  ; 
+				IN0_SL[i] <=  1  ; 
+				IN1_SL[i] <=  1  ; 
+				end
+									    end 
+
+
+				for ( i = 0 ;  i < ARRAY_SIZE ; i = i +1 ) begin  
+				if ( i == ROW_ADDR_W ) begin 
+				IN0_WL_from_ID[i] <=  0  ; 
+				IN1_WL_from_ID[i] <=  1  ; 		//AYAN :  Assuing write voltage for  in WL = 01
+				end else begin  
+				IN0_WL_from_ID[i] <=  1  ; 
+				IN1_WL_from_ID[i] <=  1  ; 		//11 pattern for ground
+				end
+								    end 
+	end else if  (DATA_TO_WRITE ==0)  begin 
+
+
+//RESET : DATA_TO_WRITE = 0
+
+				for ( i = 0 ;  i < ARRAY_SIZE ; i = i +1 ) begin
+				if (i  == COL_ADDR_W) begin 
+				IN0_BL[i] <=  1  ; 
+				IN1_BL[i] <=  1  ; // AYAN : BL is ground in RESET  
+				IN0_SL[i] <=  0  ; // AYAN : Assuing write voltage V1_SL for RESET
+				IN1_SL[i] <=  1  ; 
+				end else begin  
+				IN0_BL[i] <=  1  ; 
+				IN1_BL[i] <=  1  ; 
+				IN0_SL[i] <=  1  ; 
+				IN1_SL[i] <=  1  ; 
+				end
+									    end 
+
+
+				for ( i = 0 ;  i < ARRAY_SIZE ; i = i +1 ) begin  
+				if ( i == ROW_ADDR_W ) begin 
+				IN0_WL_from_ID[i] <=  0  ; 
+				IN1_WL_from_ID[i] <=  1  ; 		//AYAN :  Assuing write voltage for  in WL = 01
+				end else begin  
+				IN0_WL_from_ID[i] <=  1  ; 
+				IN1_WL_from_ID[i] <=  1  ; 		//11 pattern for ground
+				end
+								    end 
+
+			
+
+
+
+	end 
+
+
+
+end 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+
+		else if (is_read_ins ) begin 
+
+
+				ENABLE_WL <= 0 ; 
+				ENABLE_SL <= 0 ; 
+				ENABLE_BL <= 0 ; 
+				PRE<= 0 ;
+			      	is_read_neg_cycle <= 1; 
+				SEL_MUX_TO_CSA <= 1 ; 
+
+
+				//precharge on +ve cycle and shutoff on
+				//negative 
+
+				
+				if (!COL_SELECT_FOR_READ) begin  
+				COL_SELECT <= 0 ; 
+
+				IN0_BL[7:0] <= '0; 
+				IN1_BL[7:0] <= '1; 
+				IN0_SL[15:0] <= '1; 
+				IN1_SL[15:0] <= '1; 
+				
+				IN0_BL[15:8] <= '1; 
+				IN1_BL[15:8] <= '1; 
+
+				
+
+				end else if (COL_SELECT_FOR_READ) begin  
+
+				COL_SELECT <= 1 ; 
+
+				IN0_BL[7:0] <= '1; 
+				IN1_BL[7:0] <= '1; 
+				IN0_SL[15:0] <= '1; 
+				IN1_SL[15:0] <= '1; 
+				
+				IN0_BL[15:8] <= '0; 
+				IN1_BL[15:8] <= '1; 
+
+				end
+
+
+				for ( i = 0 ;  i < ARRAY_SIZE ; i = i +1 ) begin  
+				if ( i == ROW_ADDR_R ) begin 
+				IN0_WL_from_ID[i] <=  0  ; 
+				IN1_WL_from_ID[i] <=  0  ; 
+				end else begin  
+				IN0_WL_from_ID[i] <=  1  ; 
+				IN1_WL_from_ID[i] <=  1  ; 
+				end
+								           end
+
+
+			
+
+			IP_address_to_write_output_buffer++; 
+			IP_wr_cs_output_buffer =1 ; 
+			IP_wr_en_output_buffer =1 ;
+
+
+		end 
+
+
+	end
+
+/////Third always 
+
+
+
+
+ if (START_MAC ) begin 
+
+
+
+	ENABLE_WL <= 0;
+	ENABLE_SL <= 0;
+	ENABLE_BL <= 0;
+
+
+	if (!COL_SELECT_FOR_MAC_ADC) begin  
+	COL_SELECT <= 0 ; 
+
+	IN0_BL[7:0] <= '0; 
+	IN1_BL[7:0] <= '1; 
+	IN0_SL[15:0] <= '1; 
+	IN1_SL[15:0] <= '1; 
+	
+	IN0_BL[15:8] <= '1; 
+	IN1_BL[15:8] <= '1; 
+
+	
+
+	end else if (COL_SELECT_FOR_MAC_ADC) begin  
+
+	COL_SELECT <= 1 ; 
+
+	IN0_BL[7:0] <= '1; 
+	IN1_BL[7:0] <= '1; 
+	IN0_SL[15:0] <= '1; 
+	IN1_SL[15:0] <= '1; 
+	
+	IN0_BL[15:8] <= '0; 
+	IN1_BL[15:8] <= '1; 
+
+	end
+
+	CLK_EN_ADC <=0;	
+	
+
+	if (num_MAC_OP >= 0) begin
+	IP_address_to_read_input_buffer <= start_IF_Address;
+	rd_cs_input_buffer   	 <=1 ; 
+	rd_en_input_buffer	 <=1 ;
+	start_IF_Address <= start_IF_Address + 1 ;
+	PRE_p2 <= 0 ; 
+	PRE_p1 <= PRE_p2 ; 
+	PRE <= PRE_p1 ; 
+	start_neg_MAC_p1 <= 1; 
+	start_neg_MAC <= start_neg_MAC_p1; 
+	num_MAC_OP--;
+	end else begin
+	halt_IM_p1 <= 0 ;
+	halt_IM <= halt_IM_p1  ;
+	START_MAC_p3 <= 0 ;
+	START_MAC_p2 <= START_MAC_p3 ;
+	START_MAC_p1 <= START_MAC_p2 ;
+	START_MAC <= START_MAC_p1 ;
+	//start_MAC_neg_cycle <= 0 ;
+	rd_cs_input_buffer_p1   	 <= 0 ; 
+	rd_cs_input_buffer   	 <= rd_cs_input_buffer_p1 ; 
+	rd_en_input_buffer_p1	 <= 0 ;
+	rd_en_input_buffer	 <= rd_en_input_buffer_p1 ;
+	end
+
+
+
+     	
+  end
+
+	end
+
+

@@ -1,0 +1,14 @@
+magic
+tech sky130b
+timestamp 1662363588
+<< checkpaint >>
+rect 0 0 4700 5400
+use TEXT TEXT_1
+timestamp 1662363588
+transform 1 0 0 0 1 0
+box 0 0 4700 700
+use logo1 logo1_1
+timestamp 1662363588
+transform 1 0 -683 0 1 1750
+box 683 -1050 1383 3650
+<< end >>
