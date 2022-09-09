@@ -1,0 +1,95 @@
+#for 3x8 decoder 
+10 00  00000  00010 000000000000000000 -> a input address 00000 position in MAJ_OP_REG[31:0] array is 2 (logic0 and logic1 at 0 and 1 position respectively) 
+10 00  00001  00011 000000000000000000 -> b input address 00001 position in MAJ_OP_REG[31:0] array is 3 (logic0 and logic1 at 0 and 1 position respectively)
+10 00  00010  00100 000000000000000000 -> c input address 00010 position in MAJ_OP_REG[31:0] array is 4 (logic0 and logic1 at 0 and 1 position respectively)
+
+# function is decoder : assigning 0 
+
+#assume a = 1 , b = 0  , c = 1
+#MAJ_OP_REG = {0 , 1 , 1 , 0 , 1 }
+
+10 01  00000 00011  000000000000000000 -> MAJ execute start with "00000" having 3x8 decoder logic. "00011" is the start address
+
+#memory read and write conditions : 
+
+#read : When we = 0, oe = 1, cs = 1
+#write: When we = 1, cs = 1 
+
+
+
+
+States required : 
+
+
+READ :  
+	data_bus = 	mem_address[00000]   ; 
+	MAJ_OP_REG[2] = data_bus[0]; 
+
+READ :  
+	data_bus = 	mem_address[00001]   ; 
+	MAJ_OP_REG[3] = data_bus[0]; 
+
+READ :  
+	data_bus = 	mem_address[00001]   ; 
+	MAJ_OP_REG[3] = data_bus[0]; 
+
+
+# MAJ_OP_REG[2]  = a
+# MAJ_OP_REG[3]  = b
+# MAJ_OP_REG[4]  = c
+
+S0: 
+	execute_mig =1; , 
+	address_MIG = address_start 
+	data_in_MIG_mem[31:0] = data_bus[31:0] //  read_data[31:0] = {n8 , n11 , n12 , n14}; 
+								31    30  29   28 
+
+
+
+
+S1 : 
+	data_bus[31:0] = 32;b0; 
+	we = 1, cs = 1 //Write to mem  
+
+
+S2 :  
+	
+	data_bus[31] = MAJ_OP_REG[4]   // c 
+	data_bus[30] = [30]   // n11
+	data_bus[29] = MAJ_OP_REG[29]   // n12
+	data_bus[28] = MAJ_OP_REG[31]   // n8 
+	data_bus[27] = MAJ_OP_REG[4]   // c 
+	data_bus[26] = MAJ_OP_REG[2]   // a 
+	data_bus[25] = MAJ_OP_REG[2]   // a 
+	data_bus[24] = MAJ_OP_REG[28]   // n14 
+		
+	data_bus[23:0] = 0 ; 
+
+	address_bus = address_bus+1; 
+	we = 1, cs = 1 //Write to mem
+
+
+S3 :  
+	
+	data_bus[31] = MAJ_OP_REG[28]   // n14 
+	data_bus[30] = ~MAJ_OP_REG[2]   // a_inv
+	data_bus[29] = ~MAJ_OP_REG[2]   // a_inv 
+	data_bus[28] = ~MAJ_OP_REG[4]   // c_inv 
+	data_bus[27] = MAJ_OP_REG[31]   // n8 
+	data_bus[26] = MAJ_OP_REG[30]   // n11 
+	data_bus[25] = MAJ_OP_REG[29]   // n12 
+	data_bus[24] = ~MAJ_OP_REG[4]   // c_inv 
+		
+	data_bus[23:0] = 0 ; 
+
+	address_bus = address_bus+1; 
+	we = 1, cs = 1 //Write to mem
+	
+
+
+S4: 
+	execute_mig =1; , 
+	address = addres 
+	read_data[31:0] = data_bus[31:0] //  read_data[31:0] = {n8 , n11 , n12 , n14}; 
+								31    30  29   28
+

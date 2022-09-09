@@ -1,0 +1,229 @@
+$date
+	Tue Jan  4 20:18:12 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module top_tb $end
+$var wire 1 ! enable $end
+$var wire 5 " address_start [4:0] $end
+$var wire 32 # MAJ_OP_REG [31:0] $end
+$var reg 1 $ clk $end
+$var reg 1 % rstn $end
+$scope module uut $end
+$var wire 1 $ clk $end
+$var wire 32 & data_bus_MIG_mem [31:0] $end
+$var wire 1 % rstn $end
+$var wire 1 ' execute_MIG $end
+$var wire 5 ( address_MIG [4:0] $end
+$var wire 1 ) WE $end
+$var wire 1 * OE $end
+$var wire 1 + CS $end
+$var reg 32 , MAJ_OP_REG [31:0] $end
+$var reg 5 - address_start [4:0] $end
+$var reg 1 ! enable $end
+$scope module U_MIG_MEM $end
+$var wire 1 $ clk $end
+$var wire 32 . data [31:0] $end
+$var wire 1 ) we $end
+$var wire 1 * oe $end
+$var wire 1 + cs $end
+$var wire 5 / address [4:0] $end
+$var reg 32 0 data_out [31:0] $end
+$var reg 1 1 oe_r $end
+$scope begin MEM_READ $end
+$upscope $end
+$scope begin MEM_WRITE $end
+$upscope $end
+$upscope $end
+$scope module U_statemachine $end
+$var wire 32 2 MAJ_OP_REG [31:0] $end
+$var wire 5 3 address_start [4:0] $end
+$var wire 1 $ clk $end
+$var wire 32 4 data_bus_MIG_mem [31:0] $end
+$var wire 1 ! enable $end
+$var wire 1 5 in $end
+$var wire 1 6 mem_read $end
+$var wire 1 7 mem_write $end
+$var wire 1 % rstn $end
+$var reg 1 + CS $end
+$var reg 1 * OE $end
+$var reg 1 ) WE $end
+$var reg 5 8 address_MIG [4:0] $end
+$var reg 32 9 data_bus_MIG_mem_reg_in [31:0] $end
+$var reg 32 : data_bus_MIG_mem_reg_out [31:0] $end
+$var reg 1 ' execute_MIG $end
+$var reg 1 ; out_reg $end
+$var reg 3 < state [2:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx <
+x;
+bx :
+bx 9
+bx 8
+x7
+x6
+z5
+bx 4
+bx 3
+bx 2
+x1
+bx 0
+bx /
+bx .
+bx -
+bx ,
+x+
+x*
+x)
+bx (
+x'
+bx &
+x%
+x$
+bx #
+bx "
+x!
+$end
+#5
+bx &
+bx .
+bx 4
+16
+b0 9
+1*
+0)
+0;
+07
+b0 <
+0'
+1+
+bz (
+bz /
+bz 8
+01
+0!
+b0 #
+b0 ,
+b0 2
+1$
+0%
+#10
+0$
+#15
+11
+b11 "
+b11 -
+b11 3
+1!
+b1101000000000000000000000000000 #
+b1101000000000000000000000000000 ,
+b1101000000000000000000000000000 2
+1$
+1%
+#20
+0$
+#25
+b1 (
+b1 /
+b1 8
+1'
+b1 <
+1$
+#30
+0$
+#35
+b10 (
+b10 /
+b10 8
+b111111100000000000000000000000 9
+b101 :
+b10 <
+b111111100000000000000000000000 &
+b111111100000000000000000000000 .
+b111111100000000000000000000000 4
+b111111100000000000000000000000 0
+1$
+#40
+0$
+#45
+06
+17
+b100001000000000000000000000000 &
+b100001000000000000000000000000 .
+b100001000000000000000000000000 4
+0*
+1)
+b11 (
+b11 /
+b11 8
+b100001000000000000000000000000 :
+1;
+b11 <
+1$
+#50
+0$
+#55
+b11 &
+b11 .
+b11 4
+b100 (
+b100 /
+b100 8
+b11 :
+b100 <
+01
+1$
+#60
+0$
+#65
+16
+07
+b111111100000000000000000000000 &
+b111111100000000000000000000000 .
+b111111100000000000000000000000 4
+1*
+0)
+0;
+b101 <
+1$
+#70
+0$
+#75
+b11 9
+b110 <
+b11 &
+b11 .
+b11 4
+11
+b11 0
+1$
+#80
+0$
+#85
+bz (
+bz /
+bz 8
+b0 9
+b0 <
+1$
+#90
+0$
+#95
+b1 (
+b1 /
+b1 8
+b1 <
+bx &
+bx .
+bx 4
+bx 0
+1$

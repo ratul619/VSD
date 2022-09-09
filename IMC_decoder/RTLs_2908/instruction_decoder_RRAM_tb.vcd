@@ -1,0 +1,474 @@
+$date
+	Wed Aug 31 15:20:55 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module instruction_decoder_RRAM_tb $end
+$var wire 3 ! S_MUX2 [2:0] $end
+$var wire 3 " S_MUX1 [2:0] $end
+$var wire 1 # SEL_MUX2_TO_VSA $end
+$var wire 1 $ SEL_MUX2_TO_CSA $end
+$var wire 1 % SEL_MUX2_TO_ADC $end
+$var wire 1 & SEL_MUX1_TO_VSA $end
+$var wire 1 ' SEL_MUX1_TO_CSA $end
+$var wire 1 ( SEL_MUX1_TO_ADC $end
+$var wire 1 ) SAEN_CSA2 $end
+$var wire 1 * SAEN_CSA1 $end
+$var wire 1 + PRE $end
+$var wire 16 , IN1_WL [15:0] $end
+$var wire 16 - IN1_SL [15:0] $end
+$var wire 16 . IN1_BL [15:0] $end
+$var wire 16 / IN0_WL [15:0] $end
+$var wire 16 0 IN0_SL [15:0] $end
+$var wire 16 1 IN0_BL [15:0] $end
+$var wire 1 2 ENABLE_WL $end
+$var wire 1 3 ENABLE_SL $end
+$var wire 1 4 ENABLE_BL $end
+$var wire 1 5 CLK_EN_ADC2 $end
+$var wire 1 6 CLK_EN_ADC1 $end
+$var reg 1 7 clk $end
+$var reg 32 8 instruction [31:0] $end
+$var reg 1 9 rst $end
+$scope module uut $end
+$var wire 1 7 clk $end
+$var wire 32 : instruction [31:0] $end
+$var wire 1 9 rst $end
+$var wire 16 ; IN1_WL [15:0] $end
+$var wire 16 < IN1_BL [15:0] $end
+$var wire 16 = IN0_WL [15:0] $end
+$var wire 16 > IN0_BL [15:0] $end
+$var reg 1 6 CLK_EN_ADC1 $end
+$var reg 1 5 CLK_EN_ADC2 $end
+$var reg 4 ? COL_END_MAC [3:0] $end
+$var reg 4 @ COL_START_MAC [3:0] $end
+$var reg 1 A ENABLE_ARR_OP $end
+$var reg 1 4 ENABLE_BL $end
+$var reg 1 3 ENABLE_SL $end
+$var reg 1 2 ENABLE_WL $end
+$var reg 16 B IN0_BL_INPUT_BUFF [15:0] $end
+$var reg 16 C IN0_BL_INS_DEC [15:0] $end
+$var reg 16 D IN0_SL [15:0] $end
+$var reg 16 E IN0_WL_INPUT_BUFF [15:0] $end
+$var reg 16 F IN0_WL_INS_DEC [15:0] $end
+$var reg 16 G IN1_BL_INPUT_BUFF [15:0] $end
+$var reg 16 H IN1_BL_INS_DEC [15:0] $end
+$var reg 16 I IN1_SL [15:0] $end
+$var reg 16 J IN1_WL_INPUT_BUFF [15:0] $end
+$var reg 16 K IN1_WL_INS_DEC [15:0] $end
+$var reg 1 + PRE $end
+$var reg 4 L ROW_END_MAC [3:0] $end
+$var reg 4 M ROW_START_MAC [3:0] $end
+$var reg 1 * SAEN_CSA1 $end
+$var reg 1 ) SAEN_CSA2 $end
+$var reg 1 ( SEL_MUX1_TO_ADC $end
+$var reg 1 ' SEL_MUX1_TO_CSA $end
+$var reg 1 & SEL_MUX1_TO_VSA $end
+$var reg 1 % SEL_MUX2_TO_ADC $end
+$var reg 1 $ SEL_MUX2_TO_CSA $end
+$var reg 1 # SEL_MUX2_TO_VSA $end
+$var reg 3 N S_MUX1 [2:0] $end
+$var reg 3 O S_MUX2 [2:0] $end
+$var reg 8 P T_PULSE_MULTIPLIER [7:0] $end
+$var reg 2 Q T_PULSE_OP_TYPE [1:0] $end
+$var reg 2 R V_PULSE_MUX_SEL [1:0] $end
+$var reg 2 S V_PULSE_OP_TYPE [1:0] $end
+$var reg 1 T is_MAC_ins $end
+$var reg 1 U is_PULSE_T_ins $end
+$var reg 1 V is_PULSE_V_ins $end
+$var reg 1 W is_read_ins $end
+$var reg 1 X is_read_neg_cycle $end
+$var reg 1 Y is_write_ins $end
+$var reg 1 Z mac_mux $end
+$var reg 3 [ temp1 [2:0] $end
+$var integer 32 \ COL_ADDR_R [31:0] $end
+$var integer 32 ] COL_ADDR_W [31:0] $end
+$var integer 32 ^ ROW_ADDR_R [31:0] $end
+$var integer 32 _ ROW_ADDR_W [31:0] $end
+$var integer 32 ` counter_MAC [31:0] $end
+$var integer 32 a i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 a
+b100 `
+b0 _
+b0 ^
+b0 ]
+b0 \
+bx [
+xZ
+xY
+xX
+xW
+xV
+xU
+xT
+bx S
+bx R
+bx Q
+bx P
+bx O
+bx N
+bx M
+bx L
+bx K
+bx J
+bx I
+bx H
+bx G
+bx F
+bx E
+bx D
+bx C
+bx B
+xA
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+b10000000000000000000000000010101 :
+19
+b10000000000000000000000000010101 8
+07
+x6
+x5
+x4
+x3
+x2
+bx 1
+bx 0
+bx /
+bx .
+bx -
+bx ,
+x+
+x*
+x)
+x(
+x'
+x&
+x%
+x$
+x#
+bx "
+bx !
+$end
+#2000
+09
+#4000
+b1111111111111111 /
+b1111111111111111 =
+b1111111111111111 ,
+b1111111111111111 ;
+b1111111111111111 1
+b1111111111111111 >
+b1111111111111111 .
+b1111111111111111 <
+0A
+b0 R
+b0 S
+b0 P
+b0 Q
+b0 L
+b0 M
+b0 ?
+b0 @
+0X
+0V
+0U
+0T
+0Y
+0)
+0*
+05
+06
+1+
+0%
+0$
+0#
+0(
+0'
+0&
+b0 !
+b0 O
+b0 "
+b0 N
+04
+03
+02
+0Z
+b1111111111111111 J
+b1111111111111111 E
+b1111111111111111 G
+b1111111111111111 B
+b1111111111111111 K
+b1111111111111111 F
+b1111111111111111 H
+b1111111111111111 C
+b1111111111111111 -
+b1111111111111111 I
+b1111111111111111 0
+b1111111111111111 D
+#5000
+17
+#10000
+07
+#12000
+b10101 8
+b10101 :
+19
+#15000
+17
+#17000
+1Y
+0W
+1A
+b1 _
+b101 ]
+#20000
+07
+#22000
+b10000000000000000000000010101 8
+b10000000000000000000000010101 :
+#25000
+17
+#27000
+b1111111111111101 /
+b1111111111111101 =
+b1111111111111101 ,
+b1111111111111101 ;
+b1111111111011111 1
+b1111111111011111 >
+b1111111111011111 .
+b1111111111011111 <
+b1111111111111101 K
+b1111111111111101 F
+b1111111111011111 -
+b1111111111011111 I
+b1111111111011111 0
+b1111111111011111 D
+b1111111111011111 H
+b1111111111011111 C
+b10000 a
+14
+13
+12
+0Y
+1W
+b1 ^
+b101 \
+#30000
+07
+#32000
+1*
+03
+b10000000000000000000000100111 8
+b10000000000000000000000100111 :
+#35000
+17
+#37000
+b10 ^
+b111 \
+b1111111111111111 H
+b10000 a
+b101 "
+b101 N
+1'
+1X
+0+
+04
+02
+#40000
+07
+#42000
+14
+12
+1+
+b10000000000000000000000101010 8
+b10000000000000000000000101010 :
+#45000
+17
+#47000
+b1111111111111011 /
+b1111111111111011 =
+b1111111111111011 ,
+b1111111111111011 ;
+b1111101111111111 1
+b1111101111111111 >
+b1111101111111111 .
+b1111101111111111 <
+b1111111111111011 K
+b1111111111111011 F
+b1111101111111111 -
+b1111101111111111 I
+b1111101111111111 0
+b1111101111111111 D
+b1111101111111111 C
+b10000 a
+b11 !
+b11 O
+b11 [
+1$
+0'
+0+
+04
+02
+b1010 \
+#50000
+07
+#52000
+0*
+1)
+14
+12
+1+
+b10000000000000000000010111010 8
+b10000000000000000000010111010 :
+#55000
+17
+#57000
+b1011 ^
+b10000 a
+0+
+04
+02
+#60000
+07
+#62000
+14
+12
+1+
+b1111110 8
+b1111110 :
+#65000
+17
+#67000
+b1111011111111111 /
+b1111011111111111 =
+b1111011111111111 ,
+b1111011111111111 ;
+b1111011111111111 K
+b1111011111111111 F
+b10000 a
+0+
+04
+02
+1Y
+0W
+b111 _
+b1110 ]
+#70000
+07
+#75000
+17
+#77000
+b1111111101111111 /
+b1111111101111111 =
+b1111111101111111 ,
+b1111111101111111 ;
+b1011111111111111 1
+b1011111111111111 >
+b1011111111111111 .
+b1011111111111111 <
+b1111111101111111 K
+b1111111101111111 F
+b1011111111111111 H
+b1011111111111111 -
+b1011111111111111 I
+b1011111111111111 0
+b1011111111111111 D
+b1011111111111111 C
+b10000 a
+0$
+14
+13
+12
+#80000
+07
+#85000
+17
+#87000
+b10000 a
+#90000
+07
+#95000
+17
+#97000
+b10000 a
+#100000
+07
+#105000
+17
+#107000
+b10000 a
+#110000
+07
+#115000
+17
+#117000
+b10000 a
+#120000
+07
+#125000
+17
+#127000
+b10000 a
+#130000
+07
+#135000
+17
+#137000
+b10000 a
+#140000
+07
+#145000
+17
+#147000
+b10000 a
+#150000
+07
+#155000
+17
+#157000
+b10000 a
+#160000
+07
+#165000
+17
+#167000
+b10000 a
+#170000
+07
+#175000
+17
+#177000
+b10000 a
+#180000
+07
+#185000
+17
+#187000
+b10000 a
+#190000
+07
+#195000
+17
+#197000
+b10000 a
+#200000
+07
+#205000
+17
+#207000
+b10000 a
+#210000
+07
+#212000
