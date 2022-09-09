@@ -1,0 +1,66 @@
+module rram_analog_array (ENABLE_SL , ENABLE_BL ,ENABLE_WL,V1_WL,V2_WL,V3_WL,V4_WL,IN1_WL, IN0_WL , IN1_BL , IN0_BL , IN0_SL , IN1_SL , CSA ,ENABLE_CSA,V0_REF_ADC,V1_REF_ADC,V2_REF_ADC,ADC_OUT0,ADC_OUT1,ADC_OUT2,PRE,VDD_PRE,CLK_EN_ADC,REF_CSA,SAEN_CSA,VDD_HIGH,VDD_LOW,VSS,clk0 , V1_SL,V2_SL,V3_SL,V4_SL , V1_BL,V2_BL,V3_BL,V4_BL  , reset,up_down,load,data,count); 
+
+
+input clk0;
+input ENABLE_WL;
+input V1_WL;
+input V2_WL;
+input V3_WL;
+input V4_WL;
+input [15:0]IN1_WL;
+input [15:0]IN0_WL;
+input ENABLE_SL;
+input V1_SL;
+input V2_SL;
+input V3_SL;
+input V4_SL;
+input [15:0]IN1_SL;
+input [15:0]IN0_SL;
+input ENABLE_BL;
+input V1_BL;
+input V2_BL;
+input V3_BL;
+input V4_BL;
+input [15:0]IN1_BL;
+input [15:0]IN0_BL;
+input ENABLE_CSA;
+input V0_REF_ADC;
+input V1_REF_ADC;
+input V2_REF_ADC;
+output [15:0]CSA;
+output [15:0]ADC_OUT0;
+output [15:0]ADC_OUT1;
+output [15:0]ADC_OUT2;
+input PRE;
+input VDD_PRE;
+input [1:0]CLK_EN_ADC;
+input REF_CSA;
+input SAEN_CSA;
+input VDD_HIGH;
+input VDD_LOW;
+input VSS;
+
+T1R_16x16_W7u_xschem_with_16ADC_16CSA_06_09_layout U_layout(.ENABLE_SL(ENABLE_SL) , .ENABLE_BL(ENABLE_BL) ,.ENABLE_WL(ENABLE_WL),.V1_WL(V1_WL),.V2_WL(V2_WL),.V3_WL(V3_WL),.V4_WL(V4_WL),.IN1_WL(IN1_WL), .IN0_WL(IN0_WL) , .IN1_BL(IN1_BL) , .IN0_BL(IN0_BL) , .IN0_SL(IN0_SL) , .IN1_SL(IN1_SL) , .CSA(CSA) ,.ENABLE_CSA(ENABLE_CSA),.V0_REF_ADC(V0_REF_ADC),.V1_REF_ADC(V1_REF_ADC),.V2_REF_ADC(V2_REF_ADC),.ADC_OUT0(ADC_OUT0),.ADC_OUT1(ADC_OUT1),.ADC_OUT2(ADC_OUT1),.PRE(PRE),.VDD_PRE(VDD_PRE),.CLK_EN_ADC(CLK_EN_ADC),.REF_CSA(REF_CSA),.SAEN_CSA(SAEN_CSA),.VDD_HIGH(VDD_HIGH),.VDD_LOW(VDD_LOW),.VSS(VSS) , .V1_SL(V1_SL),.V2_SL(V2_SL),.V3_SL(V3_SL),.V4_SL(V4_SL) , .V1_BL(V1_BL),.V2_BL(V2_BL),.V3_BL(V3_BL),.V4_BL(V4_BL));
+//1T1R_16x16_W7u_xschem_with_16ADC_16CSA_06_09_layout U_1T1R_16x16_W7u_xschem_with_16ADC_16CSA_06_09_layout ();
+
+  input reset,load,up_down;
+  input [3:0] data;
+  output reg [3:0] count;
+
+
+  //always block will be executed at each and every positive edge of the clock
+  always@(posedge clk0) 
+  begin
+    if(reset)    //Set Counter to Zero
+      count <= 0;
+    else if(load)    //load the counter with data value
+      count <= data;
+    else if(up_down)        //count up
+      count <= count + 1;
+    else            //count down
+      count <= count - 1;
+  end
+
+
+
+endmodule

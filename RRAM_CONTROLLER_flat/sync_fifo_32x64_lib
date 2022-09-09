@@ -1,0 +1,334 @@
+library(sync_fifo_32x64) {
+
+ /* unit attributes */
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1uA";
+  pulling_resistance_unit : "1kohm";
+  leakage_power_unit : "1nW";
+  capacitive_load_unit(1,pf);
+
+  input_threshold_pct_fall       :  50.0 ;
+    output_threshold_pct_fall      :  50.0 ;
+    input_threshold_pct_rise       :  50.0 ;
+    output_threshold_pct_rise      :  50.0 ;
+    slew_lower_threshold_pct_fall  :  10.0 ;
+    slew_upper_threshold_pct_fall  :  90.0 ;
+    slew_lower_threshold_pct_rise  :  10.0 ;
+    slew_upper_threshold_pct_rise  :  90.0 ;
+
+
+
+ type (bus_31_0) { 
+   base_type : array ; 
+   data_type : bit  
+   bit_width : 32   
+   bit_from : 31  
+   bit_to : 0 ; 
+   downto : true ; 
+ } 
+ type (bus_5_0) { 
+   base_type : array ; 
+   data_type : bit  
+   bit_width : 6   
+   bit_from : 5  
+   bit_to : 0 ; 
+   downto : true ; 
+ } 
+ type (bus_31_0) { 
+   base_type : array ; 
+   data_type : bit  
+   bit_width : 32   
+   bit_from : 31  
+   bit_to : 0 ; 
+   downto : true ; 
+ } 
+
+  cell(sync_fifo_32x64) {
+    pin(clk) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(rst) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(wr_cs) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(rd_cs) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(rd_en) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(wr_en) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(full) { 
+	direction : output ;
+	capacitance : 0.001; 
+    } 
+    pin(empty) { 
+	direction : output ;
+	capacitance : 0.001; 
+    } 
+    bus(data_out) { 
+	bus_type : bus_31_0 ;
+	direction : output ;
+	pin(data_out[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[15]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[16]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[17]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[18]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[19]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[20]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[21]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[22]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[23]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[24]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[25]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[26]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[27]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[28]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[29]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[30]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_out[31]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(address_to_write) { 
+	bus_type : bus_5_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(address_to_write[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_write[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_write[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_write[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_write[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_write[5]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(address_to_read) { 
+	bus_type : bus_5_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(address_to_read[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_read[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_read[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_read[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_read[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(address_to_read[5]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(data_in) { 
+	bus_type : bus_31_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(data_in[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[15]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[16]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[17]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[18]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[19]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[20]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[21]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[22]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[23]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[24]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[25]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[26]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[27]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[28]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[29]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[30]) { 
+		capacitance : 0.001; 
+	} 
+	pin(data_in[31]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+  } 
+} 

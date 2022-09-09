@@ -1,0 +1,11 @@
+`define IDLE_RRAM 4'b1000 
+`define WRITE_RRAM 4'b0000 
+`define READ_RRAM 4'b0001
+`define MAC_OPERATION  4'b0010
+`define CONF_T_PULSE_RRAM 4'b0011
+`define CONF_T_PULSE_SRAM 4'b0100
+`define CONF_V_PULSE_RRAM 4'b0101
+
+
+
+
