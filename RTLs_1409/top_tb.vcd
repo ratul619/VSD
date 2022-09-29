@@ -1,0 +1,917 @@
+$date
+	Wed Sep 28 13:20:59 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module top_tb $end
+$var wire 32 ! wishbone_data_out [31:0] $end
+$var wire 1 " SAEN_CSA $end
+$var wire 1 # PRE $end
+$var wire 16 $ IN1_WL [15:0] $end
+$var wire 16 % IN1_SL [15:0] $end
+$var wire 16 & IN1_BL [15:0] $end
+$var wire 16 ' IN0_WL [15:0] $end
+$var wire 16 ( IN0_SL [15:0] $end
+$var wire 16 ) IN0_BL [15:0] $end
+$var wire 1 * ENABLE_WL $end
+$var wire 1 + ENABLE_SL $end
+$var wire 1 , ENABLE_CSA $end
+$var wire 1 - ENABLE_BL $end
+$var wire 1 . ENABLE_ADC $end
+$var wire 2 / CLK_EN_ADC [1:0] $end
+$var reg 16 0 ADC_OUT0 [15:0] $end
+$var reg 16 1 ADC_OUT1 [15:0] $end
+$var reg 16 2 ADC_OUT2 [15:0] $end
+$var reg 16 3 CSA [15:0] $end
+$var reg 1 4 clk $end
+$var reg 1 5 enable_IM $end
+$var reg 1 6 rst $end
+$var reg 1 7 wbs_we_i $end
+$var reg 32 8 wishbone_address_bus [31:0] $end
+$var reg 32 9 wishbone_data_in [31:0] $end
+$scope module uut $end
+$var wire 16 : ADC_OUT0 [15:0] $end
+$var wire 16 ; ADC_OUT1 [15:0] $end
+$var wire 16 < ADC_OUT2 [15:0] $end
+$var wire 16 = CSA [15:0] $end
+$var wire 1 4 clk $end
+$var wire 1 5 enable_IM $end
+$var wire 1 6 rst $end
+$var wire 1 7 wbs_we_i $end
+$var wire 32 > wishbone_address_bus [31:0] $end
+$var wire 32 ? wishbone_data_in [31:0] $end
+$var wire 32 @ wishbone_data_out [31:0] $end
+$var wire 1 A output_pwm $end
+$var wire 16 B input_buffer_data_out [15:0] $end
+$var wire 1 C full5 $end
+$var wire 1 D full4 $end
+$var wire 1 E full0 $end
+$var wire 1 F empty5 $end
+$var wire 1 G empty4 $end
+$var wire 1 H empty0 $end
+$var wire 32 I data_out_instruction_memory [31:0] $end
+$var wire 16 J IN1_WL [15:0] $end
+$var wire 16 K IN0_WL [15:0] $end
+$var reg 8 L AddCounter [7:0] $end
+$var reg 2 M CLK_EN_ADC [1:0] $end
+$var reg 1 N COL_SELECT_FOR_MAC_ADC $end
+$var reg 1 O DATA_TO_WRITE $end
+$var reg 2 P DUTY_CYCLE_SEL_PWM [1:0] $end
+$var reg 1 . ENABLE_ADC $end
+$var reg 1 - ENABLE_BL $end
+$var reg 1 , ENABLE_CSA $end
+$var reg 1 + ENABLE_SL $end
+$var reg 1 * ENABLE_WL $end
+$var reg 16 Q IN0_BL [15:0] $end
+$var reg 16 R IN0_SL [15:0] $end
+$var reg 16 S IN0_WL_from_ID [15:0] $end
+$var reg 16 T IN0_WL_from_IF [15:0] $end
+$var reg 16 U IN1_BL [15:0] $end
+$var reg 16 V IN1_SL [15:0] $end
+$var reg 16 W IN1_WL_from_ID [15:0] $end
+$var reg 16 X IN1_WL_from_IF [15:0] $end
+$var reg 1 # PRE $end
+$var reg 1 " SAEN_CSA $end
+$var reg 6 Y address_output_buffer [5:0] $end
+$var reg 6 Z address_to_read_instruction_memory [5:0] $end
+$var reg 32 [ data_bus_output_buffer [31:0] $end
+$var reg 32 \ data_out_instruction_memory_reg1 [31:0] $end
+$var reg 32 ] data_out_instruction_memory_reg2 [31:0] $end
+$var reg 32 ^ data_out_instruction_memory_reg3 [31:0] $end
+$var reg 32 _ data_out_instruction_memory_reg4 [31:0] $end
+$var reg 1 ` halt_IM $end
+$var reg 1 a is_IDLE $end
+$var reg 1 b is_MAC_ins $end
+$var reg 1 c is_read_ins $end
+$var reg 1 d is_read_ins_p1 $end
+$var reg 1 e is_write_ins_base $end
+$var reg 1 f is_write_ins_base_p1 $end
+$var reg 1 g is_write_ins_fpnv $end
+$var reg 1 h is_write_ins_fpnv_p1 $end
+$var reg 1 i is_write_ins_fpvv $end
+$var reg 1 j is_write_ins_fpvv_p1 $end
+$var reg 1 k is_write_ins_ispva $end
+$var reg 1 l is_write_ins_ispva_p1 $end
+$var reg 1 m is_write_ins_pwsr $end
+$var reg 1 n is_write_ins_pwsr_p1 $end
+$var reg 1 o mac_mux_from_ID $end
+$var reg 5 p num_MAC_OP [4:0] $end
+$var reg 1 q rd_enable_sync_fifo_instruction_memory $end
+$var reg 1 r rd_input_buffer $end
+$var reg 4 s read_address_bus_input_buffer [3:0] $end
+$var reg 1 t rst_pwm $end
+$var reg 9 u state [8:0] $end
+$var reg 1 v wr_sync_fifo_output_buffer $end
+$var integer 32 w COL_ADDR_W [31:0] $end
+$var integer 32 x ROW_ADDR_R [31:0] $end
+$var integer 32 y ROW_ADDR_W [31:0] $end
+$var integer 32 z i [31:0] $end
+$scope module U_pwm $end
+$var wire 1 4 CLK $end
+$var wire 1 t RST $end
+$var wire 2 { SELECT [1:0] $end
+$var wire 1 | clk $end
+$var wire 1 } rst_pwm $end
+$var wire 1 ~ output_pwm_90 $end
+$var wire 1 !" output_pwm_70 $end
+$var wire 1 "" output_pwm_50 $end
+$var wire 1 #" output_pwm_30 $end
+$var wire 1 A OUTPUT $end
+$scope module U_pwm_30 $end
+$var wire 1 | CLK $end
+$var wire 1 } RST $end
+$var wire 1 #" OUTPUT $end
+$var reg 4 $" count [3:0] $end
+$var reg 1 #" outtemp $end
+$upscope $end
+$scope module U_pwm_50 $end
+$var wire 1 | CLK $end
+$var wire 1 } RST $end
+$var wire 1 "" OUTPUT $end
+$var reg 4 %" count [3:0] $end
+$var reg 1 "" outtemp $end
+$upscope $end
+$scope module U_pwm_70 $end
+$var wire 1 | CLK $end
+$var wire 1 } RST $end
+$var wire 1 !" OUTPUT $end
+$var reg 4 &" count [3:0] $end
+$var reg 1 !" outtemp $end
+$upscope $end
+$scope module U_pwm_90 $end
+$var wire 1 | CLK $end
+$var wire 1 } RST $end
+$var wire 1 ~ OUTPUT $end
+$var reg 4 '" count [3:0] $end
+$var reg 1 ~ outtemp $end
+$upscope $end
+$scope module U_sel_pwm $end
+$var wire 1 #" a $end
+$var wire 1 "" b $end
+$var wire 1 !" c $end
+$var wire 1 ~ d $end
+$var wire 2 (" sel [1:0] $end
+$var wire 1 A out $end
+$upscope $end
+$upscope $end
+$scope module U_sync_fifo_input_buffer $end
+$var wire 4 )" address_to_read [3:0] $end
+$var wire 4 *" address_to_write [3:0] $end
+$var wire 1 4 clk $end
+$var wire 16 +" data_in [15:0] $end
+$var wire 1 r rd_cs $end
+$var wire 1 r rd_en $end
+$var wire 1 6 rst $end
+$var wire 1 7 wr_cs $end
+$var wire 1 7 wr_en $end
+$var wire 1 C full $end
+$var wire 1 F empty $end
+$var wire 16 ," data_ram [15:0] $end
+$var reg 16 -" data_out [15:0] $end
+$var reg 4 ." rd_pointer [3:0] $end
+$var reg 5 /" status_cnt [4:0] $end
+$var reg 4 0" wr_pointer [3:0] $end
+$scope module DP_RAM_IM $end
+$var wire 4 1" address_0 [3:0] $end
+$var wire 4 2" address_1 [3:0] $end
+$var wire 1 7 cs_0 $end
+$var wire 1 r cs_1 $end
+$var wire 16 3" data_0 [15:0] $end
+$var wire 1 4" oe_0 $end
+$var wire 1 r oe_1 $end
+$var wire 1 7 we_0 $end
+$var wire 1 5" we_1 $end
+$var wire 16 6" data_1 [15:0] $end
+$var reg 16 7" data_0_out [15:0] $end
+$var reg 16 8" data_1_out [15:0] $end
+$scope begin MEM_READ_0 $end
+$upscope $end
+$scope begin MEM_READ_1 $end
+$upscope $end
+$scope begin MEM_WRITE $end
+$upscope $end
+$upscope $end
+$scope begin READ_DATA $end
+$upscope $end
+$scope begin READ_POINTER $end
+$upscope $end
+$scope begin STATUS_COUNTER $end
+$upscope $end
+$scope begin WRITE_POINTER $end
+$upscope $end
+$upscope $end
+$scope module U_sync_fifo_instruction_memory $end
+$var wire 6 9" address_to_read [5:0] $end
+$var wire 6 :" address_to_write [5:0] $end
+$var wire 1 4 clk $end
+$var wire 32 ;" data_in [31:0] $end
+$var wire 1 q rd_cs $end
+$var wire 1 q rd_en $end
+$var wire 1 6 rst $end
+$var wire 1 7 wr_cs $end
+$var wire 1 7 wr_en $end
+$var wire 1 E full $end
+$var wire 1 H empty $end
+$var wire 32 <" data_ram [31:0] $end
+$var reg 32 =" data_out [31:0] $end
+$var reg 6 >" rd_pointer [5:0] $end
+$var reg 7 ?" status_cnt [6:0] $end
+$var reg 6 @" wr_pointer [5:0] $end
+$scope module DP_RAM_IM $end
+$var wire 6 A" address_0 [5:0] $end
+$var wire 6 B" address_1 [5:0] $end
+$var wire 1 7 cs_0 $end
+$var wire 1 q cs_1 $end
+$var wire 32 C" data_0 [31:0] $end
+$var wire 1 D" oe_0 $end
+$var wire 1 q oe_1 $end
+$var wire 1 7 we_0 $end
+$var wire 1 E" we_1 $end
+$var wire 32 F" data_1 [31:0] $end
+$var reg 32 G" data_0_out [31:0] $end
+$var reg 32 H" data_1_out [31:0] $end
+$scope begin MEM_READ_0 $end
+$upscope $end
+$scope begin MEM_READ_1 $end
+$upscope $end
+$scope begin MEM_WRITE $end
+$upscope $end
+$upscope $end
+$scope begin READ_DATA $end
+$upscope $end
+$scope begin READ_POINTER $end
+$upscope $end
+$scope begin STATUS_COUNTER $end
+$upscope $end
+$scope begin WRITE_POINTER $end
+$upscope $end
+$upscope $end
+$scope module U_sync_fifo_output_buffer $end
+$var wire 6 I" address_to_read [5:0] $end
+$var wire 6 J" address_to_write [5:0] $end
+$var wire 1 4 clk $end
+$var wire 32 K" data_in [31:0] $end
+$var wire 1 7 rd_cs $end
+$var wire 1 7 rd_en $end
+$var wire 1 6 rst $end
+$var wire 1 v wr_cs $end
+$var wire 1 v wr_en $end
+$var wire 1 D full $end
+$var wire 1 G empty $end
+$var wire 32 L" data_ram [31:0] $end
+$var reg 32 M" data_out [31:0] $end
+$var reg 6 N" rd_pointer [5:0] $end
+$var reg 7 O" status_cnt [6:0] $end
+$var reg 6 P" wr_pointer [5:0] $end
+$scope module DP_RAM_IM $end
+$var wire 6 Q" address_0 [5:0] $end
+$var wire 6 R" address_1 [5:0] $end
+$var wire 1 v cs_0 $end
+$var wire 1 7 cs_1 $end
+$var wire 32 S" data_0 [31:0] $end
+$var wire 1 T" oe_0 $end
+$var wire 1 7 oe_1 $end
+$var wire 1 v we_0 $end
+$var wire 1 U" we_1 $end
+$var wire 32 V" data_1 [31:0] $end
+$var reg 32 W" data_0_out [31:0] $end
+$var reg 32 X" data_1_out [31:0] $end
+$scope begin MEM_READ_0 $end
+$upscope $end
+$scope begin MEM_READ_1 $end
+$upscope $end
+$scope begin MEM_WRITE $end
+$upscope $end
+$upscope $end
+$scope begin READ_DATA $end
+$upscope $end
+$scope begin READ_POINTER $end
+$upscope $end
+$scope begin STATUS_COUNTER $end
+$upscope $end
+$scope begin WRITE_POINTER $end
+$upscope $end
+$upscope $end
+$scope begin PC $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 X"
+b0 W"
+b0xxxxxxxx V"
+0U"
+0T"
+bx S"
+bx R"
+bx Q"
+bx P"
+bx O"
+bx N"
+bx M"
+b0xxxxxxxx L"
+bx K"
+bx J"
+bx I"
+b0 H"
+b0 G"
+b0xxxxxxxx F"
+0E"
+0D"
+bx C"
+bx B"
+bx A"
+bx @"
+bx ?"
+bx >"
+bx ="
+b0xxxxxxxx <"
+bx ;"
+bx :"
+bx 9"
+b0 8"
+b0 7"
+b0xxxxxxxx 6"
+05"
+04"
+bx 3"
+bx 2"
+bx 1"
+bx 0"
+bx /"
+bx ."
+bx -"
+b0xxxxxxxx ,"
+bx +"
+bx *"
+bx )"
+bx ("
+bx '"
+bx &"
+bx %"
+bx $"
+x#"
+x""
+x!"
+x~
+z}
+z|
+bx {
+b0 z
+b0 y
+b0 x
+b0 w
+xv
+bx u
+xt
+bx s
+xr
+xq
+bx p
+xo
+xn
+xm
+xl
+xk
+xj
+xi
+xh
+xg
+xf
+xe
+xd
+xc
+xb
+xa
+x`
+bx _
+bx ^
+bx ]
+bx \
+bx [
+bx Z
+bx Y
+bx X
+bx W
+bx V
+bx U
+bx T
+bx S
+bx R
+bx Q
+bx P
+xO
+xN
+bx M
+b0 L
+bx K
+bx J
+bx I
+xH
+xG
+xF
+xE
+xD
+xC
+bx B
+xA
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+bx :
+bx 9
+bx 8
+x7
+16
+x5
+04
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+x.
+x-
+x,
+x+
+x*
+bx )
+bx (
+bx '
+bx &
+bx %
+bx $
+x#
+x"
+bx !
+$end
+#2000
+b0zzzzzzzz <"
+b0zzzzzzzz F"
+0q
+b0 Z
+b0 9"
+0C
+1F
+b0 /"
+b0 B
+b0 -"
+b0 ."
+b0 2"
+b0 0"
+b0 1"
+0D
+1G
+b0 O"
+b0 !
+b0 @
+b0 M"
+b0 N"
+b0 R"
+b0 P"
+b0 Q"
+0E
+1H
+b0 ?"
+b0 I
+b0 ="
+b0 >"
+b0 B"
+b0 @"
+b0 A"
+b0 _
+b0 ^
+b0 ]
+b0 \
+0l
+0n
+0j
+0h
+0f
+0k
+0m
+0i
+0g
+0e
+0a
+0o
+0b
+0d
+0c
+0`
+b101 u
+0t
+b0 /
+b0 M
+0"
+1#
+b0 %
+b0 V
+b0 &
+b0 U
+b0 (
+b0 R
+b0 )
+b0 Q
+0*
+0+
+0,
+0-
+0.
+05
+06
+#5000
+14
+#10000
+04
+#12000
+15
+16
+#15000
+b100111110000000000000000010011 H"
+b100111110000000000000000010011 <"
+b100111110000000000000000010011 F"
+1q
+b1 L
+14
+#20000
+04
+#25000
+b1 Z
+b1 9"
+b100111110000000000000000010011 I
+b100111110000000000000000010011 ="
+b10 L
+14
+#30000
+04
+#35000
+b100111110000000000000000100001 <"
+b100111110000000000000000100001 F"
+b100111110000000000000000100001 H"
+b10 Z
+b10 9"
+b1 >"
+b1 B"
+b100111110000000000000000010011 \
+b11 L
+14
+#40000
+04
+#45000
+b100111110000000000000000110011 <"
+b100111110000000000000000110011 F"
+b100111110000000000000000110011 H"
+b11 Z
+b11 9"
+b100111110000000000000000100001 I
+b100111110000000000000000100001 ="
+b10 >"
+b10 B"
+b100111110000000000000000010011 ]
+b100 L
+14
+#50000
+04
+#55000
+b100111110000000000000001000101 <"
+b100111110000000000000001000101 F"
+b100111110000000000000001000101 H"
+b100 Z
+b100 9"
+b100111110000000000000000110011 I
+b100111110000000000000000110011 ="
+b11 >"
+b11 B"
+b100111110000000000000000010011 ^
+b100111110000000000000000100001 \
+b101 L
+14
+#60000
+04
+#65000
+b10000000000000000000000000001 <"
+b10000000000000000000000000001 F"
+b10000000000000000000000000001 H"
+b101 Z
+b101 9"
+b100111110000000000000001000101 I
+b100111110000000000000001000101 ="
+b100 >"
+b100 B"
+b100111110000000000000000010011 _
+b100111110000000000000000100001 ]
+b100111110000000000000000110011 \
+b110 L
+14
+#70000
+04
+#75000
+b10000000000000000000000000010 <"
+b10000000000000000000000000010 F"
+b10000000000000000000000000010 H"
+b110 Z
+b110 9"
+b10000000000000000000000000001 I
+b10000000000000000000000000001 ="
+b101 >"
+b101 B"
+b100111110000000000000000100001 ^
+b100111110000000000000000110011 ]
+b100111110000000000000001000101 \
+1h
+b111 L
+b0 P
+b0 {
+b0 ("
+1O
+b11 y
+14
+#80000
+04
+#85000
+b10000000000000000000000000100 <"
+b10000000000000000000000000100 F"
+b10000000000000000000000000100 H"
+b111 Z
+b111 9"
+b10000000000000000000000000010 I
+b10000000000000000000000000010 ="
+b110 >"
+b110 B"
+1g
+b100111110000000000000000100001 _
+b100111110000000000000000110011 ^
+b100111110000000000000001000101 ]
+b10000000000000000000000000001 \
+b1000 L
+14
+#90000
+04
+#95000
+b10000000000000000000000000101 <"
+b10000000000000000000000000101 F"
+b10000000000000000000000000101 H"
+b1000 Z
+b1000 9"
+b10000000000000000000000000100 I
+b10000000000000000000000000100 ="
+b111 >"
+b111 B"
+b100111110000000000000000110011 _
+b100111110000000000000001000101 ^
+b10000000000000000000000000001 ]
+b10000000000000000000000000010 \
+1t
+1`
+b1010 u
+b1001 L
+0O
+b1 y
+14
+#100000
+04
+#105000
+b10000000000000000000000000000011 <"
+b10000000000000000000000000000011 F"
+b10000000000000000000000000000011 H"
+b10000000000000000000000000101 I
+b10000000000000000000000000101 ="
+b1000 >"
+b1000 B"
+1-
+1+
+1*
+0t
+b1011 u
+14
+#110000
+04
+#115000
+b1111111111111111 $
+b1111111111111111 J
+b1111111111111101 '
+b1111111111111101 K
+b10000000000000000000000000000011 I
+b10000000000000000000000000000011 ="
+b1100 u
+b1111111111111111 W
+b1111111111111101 S
+b1111111111111110 (
+b1111111111111110 R
+b1111111111111111 %
+b1111111111111111 V
+b1111111111111111 &
+b1111111111111111 U
+b1111111111111111 )
+b1111111111111111 Q
+b10000 z
+14
+#120000
+04
+#125000
+14
+#130000
+04
+#135000
+14
+#140000
+04
+#145000
+14
+#150000
+04
+#155000
+14
+#160000
+04
+#165000
+14
+#170000
+04
+#175000
+14
+#180000
+04
+#185000
+14
+#190000
+04
+#195000
+14
+#200000
+04
+#205000
+14
+#210000
+04
+#215000
+14
+#220000
+04
+#225000
+14
+#230000
+04
+#235000
+14
+#240000
+04
+#245000
+14
+#250000
+04
+#255000
+14
+#260000
+04
+#265000
+14
+#270000
+04
+#275000
+14
+#280000
+04
+#285000
+14
+#290000
+04
+#295000
+14
+#300000
+04
+#305000
+14
+#310000
+04
+#315000
+14
+#320000
+04
+#325000
+14
+#330000
+04
+#335000
+14
+#340000
+04
+#345000
+14
+#350000
+04
+#355000
+14
+#360000
+04
+#365000
+14
+#370000
+04
+#375000
+14
+#380000
+04
+#385000
+14
+#390000
+04
+#395000
+14
+#400000
+04
+#405000
+14
+#410000
+04
+#415000
+14
+#420000
+04
+#425000
+14
+#430000
+04
+#435000
+14
+#440000
+04
+#445000
+14
+#450000
+04
+#455000
+14
+#460000
+04
+#465000
+14
+#470000
+04
+#475000
+14
+#480000
+04
+#485000
+14
+#490000
+04
+#495000
+14
+#500000
+04
+#505000
+14
+#510000
+04
+#515000
+14
+#520000
+04
+#525000
+14
+#530000
+04
+#535000
+14
+#540000
+04
+#545000
+14
+#550000
+04
+#555000
+14
+#560000
+04
+#565000
+14
+#570000
+04
+#575000
+14
+#580000
+04
+#585000
+14
+#590000
+04
+#595000
+14
+#600000
+04
+#605000
+14
+#610000
+04
+#612000
