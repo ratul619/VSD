@@ -1,9 +1,0 @@
-
-#iverilog -g2012 instruction_decoder_RRAM_simu.v instruction_decoder_RRAM_tb.v 
-#./a.out 
-# gtkwave instruction_decoder_RRAM_tb.vcd --script=add_waves.tcl
-
-iverilog -g2012 ./top_tb.v ./top_2209.v ./sync_fifo_32x64.v ./sync_fifo_16x16.v ./ram_dp_ar_aw.v ./ram_dp_ar_aw_IM.v ./pwm.v ./pwm_30.v  ./pwm_50.v ./pwm_70.v ./pwm_90.v ./mux4x1.v
-./a.out
-
-gtkwave top_tb.vcd --script=add_waves_top.mac2.tcl &  
